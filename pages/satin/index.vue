@@ -1,0 +1,46 @@
+<template>
+    <div class="satin-page">
+        <HeaderG></HeaderG>
+        <Content :style="{margin: '0px 20px', paddingTop: '64px', background: '#fff', minHeight: '500px'}">
+            <ul>
+                <li v-for="(item, index) in satins" :key="index">
+                    <img :src="item.header" />
+                    <div>{{item.text}}</div>
+                </li>
+            </ul>
+        </Content>
+    </div>
+</template>
+<script>
+import HeaderG from "../../components/HeaderG";
+export default {
+    components: { HeaderG },
+    data() {
+        return {
+            satins: []
+        };
+    },
+    async asyncData({ $axios }) {
+        let response = await $axios.get("/satinGodApi?type=1&page=1");
+        if (response && response.status == 200) {
+            return {
+                satins: response.data.data
+            };
+        }
+    }
+};
+</script>
+<style lang="scss" scoped>
+.satin-page {
+    .ivu-layout-content {
+        ul {
+            li {
+                img {
+                    width: 50px;
+                }
+            }
+        }
+    }
+}
+</style>
+

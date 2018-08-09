@@ -3,10 +3,10 @@ module.exports = {
      ** Headers of the page
      */
     head: {
-        title: '杂货铺',
+        title: 'document',
         meta: [
             { charset: 'utf-8' },
-            { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+            { name: 'viewport', content: 'width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1' },
             { hid: 'description', name: 'description', content: 'Nuxt.js project' }
         ],
         link: [
@@ -42,9 +42,13 @@ module.exports = {
         { src: 'iview/dist/styles/iview.css' }
     ],
     plugins: [
-        { src: '~plugins/iview.js', ssr: true }
+        { src: '~plugins/iview.js', ssr: true },
+        '~/plugins/filter.js'
     ],
     axios: {
         baseURL: 'https://www.apiopen.top'
+    },
+    router: {
+        middleware: 'redirect'
     }
 }

@@ -3,6 +3,12 @@
     "version": "1.0.0",
     "description": "a nuxtjs project",
     "main": "index.js",
+    "config": {
+        "nuxt": {
+            "host": "0.0.0.0",
+            "port": "9999"
+        }
+    },
     "scripts": {
         "dev": "nuxt",
         "build": "nuxt build",
@@ -32,6 +38,9 @@
         "eslint-friendly-formatter": "^4.0.1",
         "eslint-loader": "^2.1.0",
         "eslint-plugin-vue": "^4.7.1",
-        "iview": "^3.0.0"
+        "iview": "^3.0.0",
+        "node-sass": "^4.9.2",
+        "sass-loader": "^7.1.0",
+        "scss-loader": "0.0.1"
     }
 }
