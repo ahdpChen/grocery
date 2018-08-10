@@ -1,7 +1,7 @@
 <template>
     <div>
         <HeaderG></HeaderG>
-        <Content :style="{margin: '0px 20px', paddingTop: '64px', background: '#fff', minHeight: '500px'}">
+        <Content>
             <ul>
                 <li v-for="(item, index) in novels" :key="index">
                     <div>{{item.bookname}}</div>
@@ -27,7 +27,7 @@ export default {
             this.$router.push(`/novel/detail/${name}`);
         }
     },
-    async asyncData({ $axios }) {
+    async asyncData({ $axios, $Spin }) {
         let response = await $axios.get("/novelApi");
         if (response && response.status == 200) {
             return {
@@ -37,3 +37,11 @@ export default {
     }
 };
 </script>
+<style lang="scss" scoped>
+.ivu-layout-content {
+    margin: 0px 20px;
+    padding-top: 64px;
+    background: #fff;
+    min-height: 500px;
+}
+</style>

@@ -1,7 +1,7 @@
 <template>
     <div class="user-info-page">
         <HeaderG></HeaderG>
-        <Content :style="{margin: '0px 20px', paddingTop: '64px', background: '#fff', minHeight: '500px'}">
+        <Content>
             <div>用户名：{{userInfo.phone}}</div>
         </Content>
     </div>
@@ -36,7 +36,10 @@ export default {
 <style lang="scss" scoped>
 .user-info-page {
     .ivu-layout-content {
-       
+        margin: 0px 20px;
+        padding-top: 64px;
+        background: #fff;
+        min-height: 500px;
     }
 }
 </style>

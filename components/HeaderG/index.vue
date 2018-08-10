@@ -21,6 +21,10 @@ export default {
                     text: "新闻"
                 },
                 {
+                    name: "pics",
+                    text: "美图"
+                },
+                {
                     name: "novel",
                     text: "小说"
                 },

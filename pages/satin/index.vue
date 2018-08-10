@@ -1,7 +1,7 @@
 <template>
     <div class="satin-page">
         <HeaderG></HeaderG>
-        <Content :style="{margin: '0px 20px', paddingTop: '64px', background: '#fff', minHeight: '500px'}">
+        <Content>
             <ul>
                 <li v-for="(item, index) in satins" :key="index">
                     <img :src="item.header" />
@@ -33,6 +33,10 @@ export default {
 <style lang="scss" scoped>
 .satin-page {
     .ivu-layout-content {
+        margin: 0px 20px;
+        padding-top: 64px;
+        background: #fff;
+        min-height: 500px;
         ul {
             li {
                 img {
