@@ -20,6 +20,18 @@ export default {
             satins: []
         };
     },
+    head() {
+        return {
+            title: '杂货铺-推荐',
+            // meta: [
+            //     {
+            //         hid: "description",
+            //         name: "description",
+            //         content: "My custom description"
+            //     }
+            // ]
+        };
+    },
     async asyncData({ $axios }) {
         let response = await $axios.get("/satinGodApi?type=1&page=1");
         if (response && response.status == 200) {

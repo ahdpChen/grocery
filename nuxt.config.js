@@ -1,6 +1,8 @@
 const webpack = require('webpack');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-// const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin');
+const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin');
 module.exports = {
     /*
      ** Headers of the page
@@ -26,18 +28,18 @@ module.exports = {
      */
     build: {
         plugins: [
-            new webpack.DefinePlugin({
-                'process.VERSION': require('./package.json').version
-            }),
-            new UglifyJsPlugin({
-                uglifyOptions: {
-                    compress: {
-                        warnings: false
-                    }
-                },
-                sourceMap: true,
-                parallel: true
-            }),
+            // new webpack.DefinePlugin({
+            //     'process.VERSION': require('./package.json').version
+            // }),
+            // new UglifyJsPlugin({
+            //     uglifyOptions: {
+            //         compress: {
+            //             warnings: false
+            //         }
+            //     },
+            //     sourceMap: true,
+            //     parallel: true
+            // }),
             // css 压缩代码，将下面代码注释掉
             // new OptimizeCSSPlugin({
             //     cssProcessorOptions: config.build.productionSourceMap ? { safe: true, map: { inline: false } } : { safe: true }
@@ -47,6 +49,31 @@ module.exports = {
          ** Run ESLint on save
          */
         extend(config, { isDev, isClient }) {
+            if (isDev) {
+                config.plugins.concat([
+                    new FriendlyErrorsPlugin()
+                ])
+            } else {
+                config.plugins.concat([
+                    new UglifyJsPlugin({
+                        uglifyOptions: {
+                            compress: {
+                                warnings: false
+                            }
+                        },
+                        sourceMap: true,
+                        parallel: true
+                    }),
+                    new ExtractTextPlugin({
+                        filename: 'css/common.[chunkhash].css'
+                    }),
+                    new OptimizeCSSPlugin({
+                        cssProcessorOptions: {
+                            safe: true
+                        }
+                    }),
+                ])
+            }
             if (isDev && isClient) {
                 config.module.rules.push({
                     enforce: 'pre',
@@ -56,10 +83,6 @@ module.exports = {
                 })
             }
         },
-        // filenames: {
-        //     vendor: 'vendor.[hash].js',
-        //     app: 'app.[chunkhash].js'
-        // },
         postcss: [
             require('postcss-px2rem')({
                 baseDpr: 2,
