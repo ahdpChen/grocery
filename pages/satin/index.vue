@@ -45,10 +45,6 @@ export default {
 <style lang="scss" scoped>
 .satin-page {
     .ivu-layout-content {
-        margin: 0px 20px;
-        padding-top: 64px;
-        background: #fff;
-        min-height: 500px;
         ul {
             li {
                 img {

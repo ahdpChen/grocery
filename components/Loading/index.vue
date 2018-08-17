@@ -4,7 +4,9 @@
 <script>
 export default {
     data() {
-        loading: false
+        return {
+            loading: false
+        }
     },
     methods: {
         start() {
@@ -16,3 +18,10 @@ export default {
     }
 }
 </script>
+
+<style lang="scss" scoped>
+.ivu-spin-fix {
+    bottom: 0;
+    right: 0;
+}
+</style>

@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="news-page">
         <HeaderG></HeaderG>
         <Content>
             <ul>
@@ -23,7 +23,7 @@ export default {
     data() {
         return {
             news: {}
-        }
+        };
     },
     async asyncData({ $axios }) {
         let response = await $axios.get("/journalismApi");
@@ -32,14 +32,10 @@ export default {
                 news: response.data.data
             };
         }
-    },
+    }
 };
 </script>
 <style lang="scss" scoped>
 .ivu-layout-content {
-    margin: 0px 20px;
-    padding-top: 64px;
-    background: #fff;
-    min-height: 500px;
 }
 </style>

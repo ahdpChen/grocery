@@ -1,5 +1,5 @@
 <template>
-    <Header :style="{position: 'fixed', width: '100%'}">
+    <Header>
         <Menu mode="horizontal" theme="dark">
             <div class="ivu-menu-item" :class="{active: item.name == activeName}" v-for="(item, index) of menuList" :key="index" @click="select(item.name)">
                 <Icon type="ios-paper" /> {{item.text}}
@@ -52,6 +52,8 @@ export default {
 </script>
 <style lang="scss" scoped>
 .ivu-layout-header {
+    position: relative;
+    width: 100%;
     padding: 0;
     .ivu-menu {
         display: flex;

@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="novel-page">
         <HeaderG></HeaderG>
         <Content>
             <ul>
@@ -39,9 +39,5 @@ export default {
 </script>
 <style lang="scss" scoped>
 .ivu-layout-content {
-    margin: 0px 20px;
-    padding-top: 64px;
-    background: #fff;
-    min-height: 500px;
 }
 </style>
